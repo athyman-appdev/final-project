@@ -1,0 +1,57 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      <%= @roaster.roaster_name %> details
+    </h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row mb-3">
+    <div class="col">
+      <a href="/roasters" class="btn btn-block btn-outline-secondary">
+        Go back
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="/roasters/<%= @roaster.id %>/edit" class="btn btn-block btn-outline-secondary">
+        Edit roaster
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="/delete_roaster/<%= @roaster.id %>" class="btn btn-block btn-outline-secondary">
+        Delete roaster
+      </a>
+    </div>
+  </div>
+  
+  <div class="row mt-3">
+    <div class="col-8">
+      <h1><a href="http://<%= @roaster.website_url %>"><%= @roaster.roaster_name %></a></h1>
+    </div>
+    
+    <div class="col-4">
+      <img src="<%= @roaster.image_url %>">
+    </div>
+    
+  </div>
+  
+  <div class="row mt-3 px-3">
+    <div class="col">
+      <div class="row font-weight-bold">
+        Roaster Description
+      </div>
+      
+      <div class="row">
+        <%= @roaster.roaster_description %>
+      </div>
+    </div>
+    
+    <div class="col">
+      
+    </div>
+    
+  </div>
+  
+</div>

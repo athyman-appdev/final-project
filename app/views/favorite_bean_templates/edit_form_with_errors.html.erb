@@ -1,0 +1,42 @@
+<% if @favorite_bean.errors.any? %>
+  <% @favorite_bean.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit favorite bean #<%= @favorite_bean.id %>
+</h1>
+
+<hr>
+
+<form action="/update_favorite_bean/<%= @favorite_bean.id %>" method="post">
+
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @favorite_bean.user_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="bean_id">
+      Bean
+    </label>
+
+    <input type="text" id="bean_id" name="bean_id" class="form-control" value="<%= @favorite_bean.bean_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update favorite bean
+  </button>
+</form>
+
+<hr>
+
+<a href="/favorite_beans">
+  Go back
+</a>

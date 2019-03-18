@@ -1,0 +1,58 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Favorite roaster #<%= @favorite_roaster.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/favorite_roasters" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/favorite_roasters/<%= @favorite_roaster.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit favorite roaster
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_favorite_roaster/<%= @favorite_roaster.id %>" class="btn btn-block btn-outline-secondary">
+          Delete favorite roaster
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @favorite_roaster.user_id %>
+      </dd>
+
+      <dt>
+        Roaster
+      </dt>
+      <dd>
+        <%= @favorite_roaster.roaster_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@favorite_roaster.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@favorite_roaster.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

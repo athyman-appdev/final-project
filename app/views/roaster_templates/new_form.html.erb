@@ -1,0 +1,74 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Add a new roaster
+    </h1>
+  </div>
+</div>
+
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <form action="/create_roaster" method="post">
+    
+      <div class="form-group">
+        <label for="roaster_name">
+          Roaster name
+        </label>
+    
+        <input type="text" id="roaster_name" name="roaster_name" class="form-control" placeholder="Enter roaster name here">
+      </div>
+    
+      <div class="form-group">
+        <label for="roaster_location">
+          Roaster location
+        </label>
+    
+        <input type="text" id="roaster_location" name="roaster_location" class="form-control" placeholder="Enter the roaster's street address">
+      </div>
+    
+      <div class="form-group">
+        <label for="shipping_options">
+          Shipping options
+        </label>
+    
+        <input type="text" id="shipping_options" name="shipping_options" class="form-control" placeholder="Enter the general shipping options available for this roaster">
+      </div>
+    
+      <div class="form-group">
+        <label for="roaster_description">
+          Roaster description
+        </label>
+    
+        <input type="text" id="roaster_description" name="roaster_description" class="form-control" placeholder="Enter the description of the roaster from their website here">
+      </div>
+    
+      <div class="form-group">
+        <label for="image_url">
+          Roaster logo image link
+        </label>
+    
+        <input type="text" id="image_url" name="image_url" class="form-control" placeholder="Please include a link to the roaster's logo here!">
+      </div>
+      
+      <div class="form-group">
+        <label for="website_url">
+          Roaster website link
+        </label>
+    
+        <input type="text" id="website_url" name="website_url" class="form-control" placeholder="Include the roaster's homepage URL here">
+      </div>
+      
+      <button class="btn btn-block btn-outline-primary">
+        Create roaster
+      </button>
+    </form>
+    
+    <hr>
+    
+    <a href="/roasters">
+      Go back
+    </a>
+  </div>
+</div>

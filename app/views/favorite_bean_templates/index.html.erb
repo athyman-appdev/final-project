@@ -1,0 +1,74 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All favorite beans
+    </h1>
+
+    <a href="/favorite_beans/new" class="btn btn-block btn-outline-secondary">
+      Add a new favorite bean
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Bean
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @favorite_beans.each do |favorite_bean| %>
+      <tr>
+        <td>
+          <%= favorite_bean.id %>
+        </td>
+
+        <td>
+          <%= favorite_bean.user_id %>
+        </td>
+
+        <td>
+          <%= favorite_bean.bean_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(favorite_bean.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(favorite_bean.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/favorite_beans/<%= favorite_bean.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

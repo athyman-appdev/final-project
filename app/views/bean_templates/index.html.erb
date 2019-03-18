@@ -1,0 +1,98 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All beans
+    </h1>
+
+    <a href="/beans/new" class="btn btn-block btn-outline-secondary">
+      Add a new bean
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Country of origin
+        </th>
+
+        <th>
+          Processing type
+        </th>
+
+        <th>
+          Flavor profiles
+        </th>
+
+        <th>
+          Price
+        </th>
+
+        <th>
+          Roaster
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @beans.each do |bean| %>
+      <tr>
+        <td>
+          <%= bean.id %>
+        </td>
+
+        <td>
+          <%= bean.country_of_origin %>
+        </td>
+
+        <td>
+          <%= bean.processing_type %>
+        </td>
+
+        <td>
+          <%= bean.flavor_profiles %>
+        </td>
+
+        <td>
+          <%= bean.price %>
+        </td>
+
+        <td>
+          <%= bean.roaster_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(bean.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(bean.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/beans/<%= bean.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

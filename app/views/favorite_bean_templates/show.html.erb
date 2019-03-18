@@ -1,0 +1,58 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Favorite bean #<%= @favorite_bean.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/favorite_beans" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/favorite_beans/<%= @favorite_bean.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit favorite bean
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_favorite_bean/<%= @favorite_bean.id %>" class="btn btn-block btn-outline-secondary">
+          Delete favorite bean
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @favorite_bean.user_id %>
+      </dd>
+
+      <dt>
+        Bean
+      </dt>
+      <dd>
+        <%= @favorite_bean.bean_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@favorite_bean.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@favorite_bean.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

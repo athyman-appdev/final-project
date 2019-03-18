@@ -1,0 +1,42 @@
+<% if @favorite_roaster.errors.any? %>
+  <% @favorite_roaster.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit favorite roaster #<%= @favorite_roaster.id %>
+</h1>
+
+<hr>
+
+<form action="/update_favorite_roaster/<%= @favorite_roaster.id %>" method="post">
+
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @favorite_roaster.user_id %>">
+  </div>
+
+  <div class="form-group">
+    <label for="roaster_id">
+      Roaster
+    </label>
+
+    <input type="text" id="roaster_id" name="roaster_id" class="form-control" value="<%= @favorite_roaster.roaster_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update favorite roaster
+  </button>
+</form>
+
+<hr>
+
+<a href="/favorite_roasters">
+  Go back
+</a>

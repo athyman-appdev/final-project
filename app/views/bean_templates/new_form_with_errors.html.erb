@@ -1,0 +1,70 @@
+<!-- Validation failure messages -->
+<% if @bean.present? %>
+  <% if @bean.errors.any? %>
+    <% @bean.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new bean
+</h1>
+
+
+<hr>
+
+<form action="/create_bean" method="post">
+
+  <div class="form-group">
+    <label for="country_of_origin">
+      Country of origin
+    </label>
+
+    <input type="text" id="country_of_origin" name="country_of_origin" class="form-control" value="<%= @bean.country_of_origin %>">
+  </div>
+
+  <div class="form-group">
+    <label for="processing_type">
+      Processing type
+    </label>
+
+    <input type="text" id="processing_type" name="processing_type" class="form-control" value="<%= @bean.processing_type %>">
+  </div>
+
+  <div class="form-group">
+    <label for="flavor_profiles">
+      Flavor profiles
+    </label>
+
+    <input type="text" id="flavor_profiles" name="flavor_profiles" class="form-control" value="<%= @bean.flavor_profiles %>">
+  </div>
+
+  <div class="form-group">
+    <label for="price">
+      Price
+    </label>
+
+    <input type="text" id="price" name="price" class="form-control" value="<%= @bean.price %>">
+  </div>
+
+  <div class="form-group">
+    <label for="roaster_id">
+      Roaster
+    </label>
+
+    <input type="text" id="roaster_id" name="roaster_id" class="form-control" value="<%= @bean.roaster_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create bean
+  </button>
+</form>
+
+<hr>
+
+<a href="/beans">
+  Go back
+</a>
