@@ -3751,8 +3751,7 @@ button.close {
   min-height: calc(100% - (0.5rem * 2)); }
 
 .modal-content {
-  position: relative;
-  display: flex;
+  position: relative;display: flex;
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
@@ -6281,4 +6280,10 @@ a.text-dark:hover, a.text-dark:focus {
 
 .fa-cog {
   color: white;
+}
+
+.crop-img {
+    width: 200px;
+    height:200px;
+    margin: -100px -100px -100px -100px;
 }

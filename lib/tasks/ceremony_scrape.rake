@@ -27,18 +27,15 @@ task :scrape_ceremony => :environment do
                 bean.cultivar = coffee_page.css('[data-id="cultivar"]').text.strip.gsub("cultivar ","")
                 bean.flavor_profiles = coffee_page.css('.price-wrap+ p').text.strip
                 bean.country_of_origin = coffee_page.css('#pdp-order h1').text.strip
-                
-                #trying to pull image url
-                #rawpage = HTTParty.get(coffee_page)
-                #doc = Nokogiri::HTML(HTTParty.get(coffee_page))
-                
-                #bean.image_url = coffee_page.css('img src data-featured-product-image').text
                 bean.image_url = coffee_page.css('img:nth-child(6)').attr('src')
                 
                 if bean.country_of_origin == "Origin Set" || bean.country_of_origin == "Gift Card (online use only)"
                     bean.destroy
                 else
                     bean.save
+                    # if bean.id == "1" then ap bean 
+                    #     else ap "sup y'all" 
+                    # end
                 end
                 
         end
