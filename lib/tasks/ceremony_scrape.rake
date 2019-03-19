@@ -8,7 +8,7 @@ require 'httparty'
 desc "Scrape Coffees from the Ceremony Coffee Website and store them in the Beans table"
 task :scrape_ceremony => :environment do
     url = "https://shop.ceremonycoffee.com/collections/single-origin"
-    
+    Bean.where(roaster_id: "2").destroy_all
     mechanize = Mechanize.new
     mechanize.get(url) do |page|
         page.links_with(:href => /products/).each do |link|
