@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: reviews
+# Table name: roaster_reviews
 #
 #  id         :integer          not null, primary key
 #  body       :string
 #  user_id    :integer
-#  beans_id   :integer
+#  roaster_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Review < ApplicationRecord
+class RoasterReview < ApplicationRecord
     
     belongs_to :user
-    belongs_to :bean, :required => false, :foreign_key => "beans_id"
-    
+    belongs_to :roaster, :required => false, :foreign_key => "roaster_id"
 end

@@ -10,11 +10,11 @@ task :scrape_ceremony => :environment do
     url = "https://shop.ceremonycoffee.com/collections/single-origin"
     Bean.where(roaster_id: "2").destroy_all
     mechanize = Mechanize.new
+    
     mechanize.get(url) do |page|
         page.links_with(:href => /products/).each do |link|
             coffee_page = link.click
-        
-            #if link.text != "gift-card" || link.text != "origin-set"
+                
                 bean = Bean.new
                 
                 bean.acidity = coffee_page.css('[data-id="acidity"]').text.strip.gsub("acidity ","")
@@ -28,17 +28,19 @@ task :scrape_ceremony => :environment do
                 bean.flavor_profiles = coffee_page.css('.price-wrap+ p').text.strip
                 bean.country_of_origin = coffee_page.css('#pdp-order h1').text.strip
                 
+                #trying to pull image url
+                #rawpage = HTTParty.get(coffee_page)
+                #doc = Nokogiri::HTML(HTTParty.get(coffee_page))
+                
+                #bean.image_url = coffee_page.css('img src data-featured-product-image').text
+                bean.image_url = coffee_page.css('img:nth-child(6)').attr('src')
+                
                 if bean.country_of_origin == "Origin Set" || bean.country_of_origin == "Gift Card (online use only)"
                     bean.destroy
                 else
                     bean.save
                 end
                 
-                #bean.save
-                #ap bean
-            #else
-            #    ap "Something fucked up"
-            #end
         end
     end
 end

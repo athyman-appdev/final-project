@@ -15,6 +15,7 @@
 #  harvest_season    :string
 #  cultivar          :string
 #  acidity           :string
+#  image_url         :string
 #
 
 class Bean < ApplicationRecord

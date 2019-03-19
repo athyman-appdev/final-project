@@ -1,0 +1,51 @@
+<h1>
+  Add a new roaster review
+</h1>
+
+
+<hr>
+
+<form action="/create_roaster_review" method="post">
+
+  <div class="form-group">
+    <label for="title">
+      Title
+    </label>
+
+    <input type="text" id="title" name="title" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="body">
+      Body
+    </label>
+
+    <input type="text" id="body" name="body" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="roaster_id">
+      Roaster
+    </label>
+
+    <input type="text" id="roaster_id" name="roaster_id" class="form-control">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create roaster review
+  </button>
+</form>
+
+<hr>
+
+<a href="/roaster_reviews">
+  Go back
+</a>

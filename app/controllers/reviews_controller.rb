@@ -20,7 +20,6 @@ class ReviewsController < ApplicationController
   def create_row
     @review = Review.new
 
-    @review.title = params.fetch("title")
     @review.body = params.fetch("body")
     @review.user_id = params.fetch("user_id")
     @review.beans_id = params.fetch("beans_id")

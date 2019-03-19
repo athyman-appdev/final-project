@@ -34,14 +34,19 @@
         <div class="card-header font-weight-bold bg-success">
           Most Popular Beans
         </div>
-        
-        <div class="card-body">
-          Here I will pull in the beans with the most favorites
-        </div>
+          <div class="mt-2">
+            <% @roaster.beans.limit(3).each do |bean| %>
+              <div class="card border border-white no-padding">
+                <h6><%= bean.country_of_origin %> - <%= bean.processing_type %></h6>
+                <p><%= bean.flavor_profiles %></p>
+              </div>
+            <% end %>
+          </div>
       </div>
     </div>
   </div>
-  
+</div>
+<div class="container">
   <div class="row my-3 px-3 font-italic">
     <%= @roaster.shipping_options %>
   </div>
@@ -51,10 +56,55 @@
       Roaster Reviews
     </div>
     <div class="card-body">
-      Text of all reviews iterated over and over
+      <div class="media-body">
+          <form action="/create_roaster_review" method="post" class="pt-4">
+
+            <input type="hidden" name="roaster_id" value="<%= @roaster.id %>">
+
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+            <!-- Label and input for star rating -->
+
+            <!-- Label and input for body -->
+            <div class="form-group">
+              <label for="body" class="sr-only">
+                Body
+              </label>
+
+              <div class="input-group">
+                <input type="text" id="body" name="body" class="form-control" placeholder="Add a review..." required>
+
+                <span class="input-group-append">
+                  <button class="btn btn-primary" type="submit">
+                    <i class="far fa-edit"></i>
+
+                    Add Review
+                  </button>
+                </span>
+              </div> <!-- input-group -->
+            </div>  <!-- form-group -->
+          </form>
+        </div> <!-- media-body -->
+        </div> <!--card-body-->
+      <% @roaster_reviews.reverse.each do |roaster_review| %>
+      <div class="card-body mt-1">
+        <div class="card-header border-primary">
+          <span class="font-italic">
+            <a href="/users/<%= roaster_review.user_id %>">
+              <%= User.find(roaster_review.user_id).email %>
+            </a>
+          </span>
+          <span>
+            Created <%= time_ago_in_words(roaster_review.created_at) %> ago
+          </span>
+        </div>
+        <div class="card-body bg-success">
+            <%= roaster_review.body %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
-  
+<div class="container">
   <div class="row mb-3">
     <div class="col">
       <a href="/roasters" class="btn btn-block btn-outline-secondary">

@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Roaster review resource:
+
+  # CREATE
+  get("/roaster_reviews/new", { :controller => "roaster_reviews", :action => "new_form" })
+  post("/create_roaster_review", { :controller => "roaster_reviews", :action => "create_row" })
+
+  # READ
+  get("/roaster_reviews", { :controller => "roaster_reviews", :action => "index" })
+  get("/roaster_reviews/:id_to_display", { :controller => "roaster_reviews", :action => "show" })
+
+  # UPDATE
+  get("/roaster_reviews/:prefill_with_id/edit", { :controller => "roaster_reviews", :action => "edit_form" })
+  post("/update_roaster_review/:id_to_modify", { :controller => "roaster_reviews", :action => "update_row" })
+
+  # DELETE
+  get("/delete_roaster_review/:id_to_remove", { :controller => "roaster_reviews", :action => "destroy_row" })
+
+  #------------------------------
+
   # Routes for the Favorite bean resource:
 
   # CREATE

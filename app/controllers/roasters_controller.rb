@@ -7,6 +7,8 @@ class RoastersController < ApplicationController
 
   def show
     @roaster = Roaster.find(params.fetch("id_to_display"))
+    @roaster_reviews = RoasterReview.all
+    @beans = Bean.all
 
     render("roaster_templates/show.html.erb")
   end

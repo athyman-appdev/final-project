@@ -1,0 +1,72 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Roaster review #<%= @roaster_review.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/roaster_reviews" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/roaster_reviews/<%= @roaster_review.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit roaster review
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_roaster_review/<%= @roaster_review.id %>" class="btn btn-block btn-outline-secondary">
+          Delete roaster review
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @roaster_review.title %>
+      </dd>
+
+      <dt>
+        Body
+      </dt>
+      <dd>
+        <%= @roaster_review.body %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @roaster_review.user_id %>
+      </dd>
+
+      <dt>
+        Roaster
+      </dt>
+      <dd>
+        <%= @roaster_review.roaster_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@roaster_review.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@roaster_review.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

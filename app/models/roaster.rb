@@ -18,6 +18,8 @@ class Roaster < ApplicationRecord
     validates :roaster_location, presence: true
     validates :image_url, presence: true
     
+    #:class_name => "beans", :foreign_key => "roaster_id", 
+    
     has_many :beans, :dependent => :destroy
     has_many :favorite_roasters
     
