@@ -10,8 +10,7 @@
 #  roaster_id        :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  image_url         :string
-#  elevation         :integer
+#  elevation         :string
 #  roast_profile     :string
 #  harvest_season    :string
 #  cultivar          :string

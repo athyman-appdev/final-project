@@ -23,8 +23,12 @@ class BeansController < ApplicationController
     @bean.country_of_origin = params.fetch("country_of_origin")
     @bean.processing_type = params.fetch("processing_type")
     @bean.flavor_profiles = params.fetch("flavor_profiles")
-    @bean.price = params.fetch("price")
     @bean.roaster_id = params.fetch("roaster_id")
+    @bean.price = params.fetch("price")
+    @bean.acidity = params.fetch("acidity")
+    @bean.elevation = params.fetch("elevation")
+    @bean.harvest_season = params.fetch("harvest_season")
+    @bean.roast_profile = params.fetch("roast_profile")
 
     if @bean.valid?
       @bean.save

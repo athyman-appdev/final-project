@@ -1,9 +1,7 @@
 class CoffeeController < ApplicationController
     
-    def index
-        render("layouts/index.html.erb")
-    end
-    
+    skip_before_action :authenticate_user!, :only => [:about]
+   
     def about
         render("layouts/about.html.erb")
     end

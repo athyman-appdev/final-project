@@ -1,59 +1,106 @@
-<h1>
-  Add a new bean
-</h1>
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Add a new bean
+    </h1>
+  </div>
+</div>
 
 
 <hr>
-
-<form action="/create_bean" method="post">
-
-  <div class="form-group">
-    <label for="country_of_origin">
-      Country of origin
-    </label>
-
-    <input type="text" id="country_of_origin" name="country_of_origin" class="form-control">
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <form action="/create_bean" method="post">
+    
+      <div class="form-group">
+        <label for="country_of_origin">
+          Country of origin
+        </label>
+    
+        <input type="text" id="country_of_origin" name="country_of_origin" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="processing_type">
+          Processing type
+        </label>
+    
+        <input type="text" id="processing_type" name="processing_type" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="flavor_profiles">
+          Flavor profiles
+        </label>
+    
+        <input type="text" id="flavor_profiles" name="flavor_profiles" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="price">
+          Price
+        </label>
+    
+        <input type="text" id="price" name="price" class="form-control">
+      </div>
+    
+      <div class="form-group">
+        <label for="roaster_id">
+          Roaster
+        </label>
+    
+        <%= select_tag("roaster_id", options_from_collection_for_select(Roaster.all, :id, :roaster_name), :class => "form-control") %>
+      </div>
+      
+      <div class="form-group">
+        <label for="acidity">
+          Acidity
+        </label>
+    
+        <input type="text" id="acidity" name="acidity" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="elevation">
+          Elevation
+        </label>
+    
+        <input type="text" id="elevation" name="elevation" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="cultivar">
+          Cultivar
+        </label>
+    
+        <input type="text" id="cultivar" name="cultivar" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="roast_profile">
+          Roast Profile
+        </label>
+    
+        <input type="text" id="roast_profile" name="roast_profile" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="harvest_season">
+          Harvest Season
+        </label>
+    
+        <input type="text" id="harvest_season" name="harvest_season" class="form-control">
+      </div>
+    
+      <button class="btn btn-block btn-outline-secondary">
+        Create bean
+      </button>
+    </form>
+    
+    <hr>
+    
+    <a href="/beans">
+      Go back
+    </a>
   </div>
-
-  <div class="form-group">
-    <label for="processing_type">
-      Processing type
-    </label>
-
-    <input type="text" id="processing_type" name="processing_type" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="flavor_profiles">
-      Flavor profiles
-    </label>
-
-    <input type="text" id="flavor_profiles" name="flavor_profiles" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="price">
-      Price
-    </label>
-
-    <input type="text" id="price" name="price" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="roaster_id">
-      Roaster
-    </label>
-
-    <input type="text" id="roaster_id" name="roaster_id" class="form-control">
-  </div>
-
-  <button class="btn btn-block btn-outline-secondary">
-    Create bean
-  </button>
-</form>
-
-<hr>
-
-<a href="/beans">
-  Go back
-</a>
+</div>

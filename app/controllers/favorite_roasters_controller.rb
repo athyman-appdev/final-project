@@ -26,7 +26,7 @@ class FavoriteRoastersController < ApplicationController
     if @favorite_roaster.valid?
       @favorite_roaster.save
 
-      redirect_back(:fallback_location => "/favorite_roasters", :notice => "Favorite roaster created successfully.")
+      redirect_back(:fallback_location => "/roasters", :notice => "Favorite roaster created successfully.")
     else
       render("favorite_roaster_templates/new_form_with_errors.html.erb")
     end

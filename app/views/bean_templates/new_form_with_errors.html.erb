@@ -55,7 +55,47 @@
       Roaster
     </label>
 
-    <input type="text" id="roaster_id" name="roaster_id" class="form-control" value="<%= @bean.roaster_id %>">
+    <%= select_tag("roaster_id", options_from_collection_for_select(Roaster.all, :id, :roaster_name), :class => "form-control") %>
+  </div>
+  
+  <div class="form-group">
+    <label for="acidity">
+      Acidity
+    </label>
+
+    <input type="text" id="acidity" name="acidity" class="form-control" value="<%= @bean.acidity %>">
+  </div>
+  
+  <div class="form-group">
+    <label for="elevation">
+      Elevation
+    </label>
+
+    <input type="text" id="elevation" name="elevation" class="form-control" value="<%= @bean.elevation %>">
+  </div>
+  
+  <div class="form-group">
+    <label for="cultivar">
+      Cultivar
+    </label>
+
+    <input type="text" id="cultivar" name="cultivar" class="form-control" value="<%= @bean.cultivar %>">
+  </div>
+  
+  <div class="form-group">
+    <label for="roast_profile">
+      Roast Profile
+    </label>
+
+    <input type="text" id="roast_profile" name="roast_profile" class="form-control" value="<%= @bean.roast_profile %>">
+  </div>
+  
+  <div class="form-group">
+    <label for="harvest_season">
+      Harvest Season
+    </label>
+
+    <input type="text" id="harvest_season" name="harvest_season" class="form-control" value="<%= @bean.harvest_season %>">
   </div>
 
   <button class="btn btn-block btn-outline-secondary">

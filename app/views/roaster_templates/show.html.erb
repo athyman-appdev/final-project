@@ -6,6 +6,55 @@
   </div>
 </div>
 <div class="container">
+  <div class="row mt-3">
+    <div class="col-8">
+      <h1><a href="http://<%= @roaster.website_url %>"><%= @roaster.roaster_name %></a></h1>
+    </div>
+    
+    <div class="col-4">
+      <img src="<%= @roaster.image_url %>">
+    </div>
+    
+  </div>
+  
+  <div class="row mt-3 px-3">
+    <div class="card-deck">
+      <div class="card border-primary w-50">
+        <div class="card-header font-weight-bold bg-success">
+          Roaster Description
+        </div>
+        
+        <div class="card-body">
+          <%= @roaster.roaster_description %> </br> </br>
+          <%= @roaster.roaster_location %>
+        </div>
+      </div>
+    
+      <div class="card border-primary w-50">
+        <div class="card-header font-weight-bold bg-success">
+          Most Popular Beans
+        </div>
+        
+        <div class="card-body">
+          Here I will pull in the beans with the most favorites
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row my-3 px-3 font-italic">
+    <%= @roaster.shipping_options %>
+  </div>
+  
+  <div class="card border-primary my-3">
+    <div class="card-header font-weight-bold bg-primary text-white">
+      Roaster Reviews
+    </div>
+    <div class="card-body">
+      Text of all reviews iterated over and over
+    </div>
+  </div>
+  
   <div class="row mb-3">
     <div class="col">
       <a href="/roasters" class="btn btn-block btn-outline-secondary">
@@ -25,33 +74,4 @@
       </a>
     </div>
   </div>
-  
-  <div class="row mt-3">
-    <div class="col-8">
-      <h1><a href="http://<%= @roaster.website_url %>"><%= @roaster.roaster_name %></a></h1>
-    </div>
-    
-    <div class="col-4">
-      <img src="<%= @roaster.image_url %>">
-    </div>
-    
-  </div>
-  
-  <div class="row mt-3 px-3">
-    <div class="col">
-      <div class="row font-weight-bold">
-        Roaster Description
-      </div>
-      
-      <div class="row">
-        <%= @roaster.roaster_description %>
-      </div>
-    </div>
-    
-    <div class="col">
-      
-    </div>
-    
-  </div>
-  
 </div>
