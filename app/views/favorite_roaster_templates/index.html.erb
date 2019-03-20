@@ -1,5 +1,5 @@
 <div class="row mb-3">
-  <div class="col-md-12">
+  <div class="col-md-8 offset-md-2">
     <h1>
       All favorite roasters
     </h1>
@@ -12,63 +12,42 @@
 
 
 <hr>
-
-<div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Roaster
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @favorite_roasters.each do |favorite_roaster| %>
-      <tr>
-        <td>
-          <%= favorite_roaster.id %>
-        </td>
-
-        <td>
-          <%= favorite_roaster.user_id %>
-        </td>
-
-        <td>
-          <%= favorite_roaster.roaster_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(favorite_roaster.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(favorite_roaster.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/favorite_roasters/<%= favorite_roaster.id %>">
-            Show details
+<% @favorite_roasters.each do |roaster| %>
+<div class="card col-md-8 offset-md-2 mb-3 border-light">
+  <h3 class="card-header bg-success align-middle text-decoration-none rounded" style="height: 90px"><a href="/roasters/<%= roaster.id %>"><%= roaster.roaster.roaster_name %></br>
+    <img src="<%= roaster.roaster.image_url %>" class="ml-2 align-middle rounded" style="height: 25px"></a>
+  </h3>
+    <div>
+      <% if FavoriteRoaster.where(user_id: current_user, roaster_id: roaster.id).exists? %>
+        <% @current_favorite = FavoriteRoaster.find_by(user_id: current_user, roaster_id: roaster.id).id %>
+          <a href="/delete_favorite_roaster/<%= @current_favorite %>">
+            <button class="btn btn-link pull-right text-danger">
+              <i class="fas fa-heart-broken"></i>
+              Make this roaster not a favorite :(
+            </button>
           </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+        <% else %>
+            <form action="/create_favorite_roaster" method="post">
+              <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+              <input type="hidden" id="roaster_id" name="roaster_id" value="<%= roaster.id %>">
+                  <button class="btn btn-link pull-right">
+                    <i class="fas fa-kiss-wink-heart"></i>
+                    Make this roaster a favorite of mine!
+                  </button>
+            </form>
+        <% end %>
+    </div>
+  <div class="card-body">
+    <p class="card-text"><%= roaster.roaster.roaster_description %></p>
+    <p class="card-text font-italic">Shipping options: <%= roaster.roaster.shipping_options %></p>
+    <div class="btn-group" role="group">
+      <button class="btn btn-info mr-2">
+        <a href="/roasters/<%= roaster.id %>">Roaster details</a>
+      </button>
+      <button class="btn btn-outline-secondary mr-2">
+        <a href="/reviews/new">Review this roaster!</a>
+      </button>
+    </div>
   </div>
 </div>
+<% end %>
