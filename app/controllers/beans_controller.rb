@@ -1,12 +1,16 @@
 class BeansController < ApplicationController
   def index
     @beans = Bean.all
+    
+    @roasters = Roaster.all
 
     render("bean_templates/index.html.erb")
   end
 
   def show
     @bean = Bean.find(params.fetch("id_to_display"))
+    @roaster = Roaster.find(@bean.roaster_id)
+    @reviews = Review.all
 
     render("bean_templates/show.html.erb")
   end
@@ -29,6 +33,8 @@ class BeansController < ApplicationController
     @bean.elevation = params.fetch("elevation")
     @bean.harvest_season = params.fetch("harvest_season")
     @bean.roast_profile = params.fetch("roast_profile")
+    @bean.image_url = params.fetch("image_url")
+    @bean.cultivar = params.fetch("cultivar")
 
     if @bean.valid?
       @bean.save
@@ -51,8 +57,14 @@ class BeansController < ApplicationController
     @bean.country_of_origin = params.fetch("country_of_origin")
     @bean.processing_type = params.fetch("processing_type")
     @bean.flavor_profiles = params.fetch("flavor_profiles")
-    @bean.price = params.fetch("price")
     @bean.roaster_id = params.fetch("roaster_id")
+    @bean.price = params.fetch("price")
+    @bean.acidity = params.fetch("acidity")
+    @bean.elevation = params.fetch("elevation")
+    @bean.harvest_season = params.fetch("harvest_season")
+    @bean.roast_profile = params.fetch("roast_profile")
+    @bean.image_url = params.fetch("image_url")
+    @bean.cultivar = params.fetch("cultivar")
 
     if @bean.valid?
       @bean.save

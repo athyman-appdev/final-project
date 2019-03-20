@@ -3,10 +3,10 @@
 # Table name: beans
 #
 #  id                :integer          not null, primary key
-#  country_of_origin :string
+#  country_of_origin :string x
 #  processing_type   :string
-#  flavor_profiles   :string
-#  price             :float
+#  flavor_profiles   :string x
+#  price             :float 
 #  roaster_id        :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

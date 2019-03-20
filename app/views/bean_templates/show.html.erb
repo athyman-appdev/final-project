@@ -1,79 +1,56 @@
 <div class="row mb-3">
-  <div class="col-md-8 offset-md-2">
+  <div class="col-md-6 offset-md-3">
     <h1>
-      Bean #<%= @bean.id %> details
+      <%= @bean.country_of_origin.titlecase %> details
     </h1>
-
-    <div class="row mb-3">
-      <div class="col">
-        <a href="/beans" class="btn btn-block btn-outline-secondary">
-          Go back
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="/beans/<%= @bean.id %>/edit" class="btn btn-block btn-outline-secondary">
-          Edit bean
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="/delete_bean/<%= @bean.id %>" class="btn btn-block btn-outline-secondary">
-          Delete bean
-        </a>
+    <div class="row mt-3 px-3">
+      <div class="card-deck col-12">
+          <div class="card border-0">
+            <div class="card-body">
+              <p><a class="font-weight-bold">Processing type: </a><%= @bean.processing_type %></p>
+              <p><a class="font-weight-bold">Flavor profiles: </a><%= @bean.flavor_profiles %></p>
+              <p><a class="font-weight-bold">Price: </a>$<%= @bean.price.to_f.round %></p> </br>
+              <p><a class="font-weight-bold">Elevation: </a><%= @bean.elevation %></p>
+              <p><a class="font-weight-bold">Roast profile: </a><%= @bean.roast_profile %></p>
+              <p><a class="font-weight-bold">Harvest season: </a><%= @bean.harvest_season %></p>
+              <p><a class="font-weight-bold">Cultivar: </a><%= @bean.cultivar %></p>
+              <p><a class="font-weight-bold">Acidity: </a><%= @bean.acidity %></p>
+            </div>
+          </div>
+      
+          <div class="card border-0">
+            <div class="card-body">
+              <img src="<%= @bean.image_url %>" class="img-thumbnail rounded mx-auto d-block">
+            </div>
+          </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="container">
+  
+</div>  
+  
 
-    <dl>
-      <dt>
-        Country of origin
-      </dt>
-      <dd>
-        <%= @bean.country_of_origin %>
-      </dd>
+<div class="container">
+  <div class="row mb-3">
+    <div class="col">
+      <a href="/beans" class="btn btn-block btn-outline-secondary">
+        Go back
+      </a>
+    </div>
 
-      <dt>
-        Processing type
-      </dt>
-      <dd>
-        <%= @bean.processing_type %>
-      </dd>
+    <div class="col">
+      <a href="/beans/<%= @bean.id %>/edit" class="btn btn-block btn-outline-secondary">
+        Edit bean
+      </a>
+    </div>
 
-      <dt>
-        Flavor profiles
-      </dt>
-      <dd>
-        <%= @bean.flavor_profiles %>
-      </dd>
-
-      <dt>
-        Price
-      </dt>
-      <dd>
-        <%= @bean.price %>
-      </dd>
-
-      <dt>
-        Roaster
-      </dt>
-      <dd>
-        <%= @bean.roaster_id %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@bean.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@bean.updated_at) %> ago
-      </dd>
-    </dl>
+    <div class="col">
+      <a href="/delete_bean/<%= @bean.id %>" class="btn btn-block btn-outline-secondary">
+        Delete bean
+      </a>
+    </div>
   </div>
 </div>
 

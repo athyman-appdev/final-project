@@ -39,10 +39,10 @@
 
     <% @roaster.beans.each do |bean| %>
     <div class="carousel-item <% if bean == @roaster.beans.first then %> <%= "active" %> <% else %> <%= "" %> <% end %>">
-      <div class="card">
-        <img class="card-img-top img-thumbnail" src="<%= bean.image_url %>" style="margin: -200px 0 -200px 0">
+      <div class="card border-0">
+        <img class="card-img-top img-thumbnail" src="<%= bean.image_url %>" style="position: relative; margin: 20px auto 20px; width: 50%; height: 50%; background-position: 50% 50%; background-repeat: no-repeat; background-size: cover;">
         <div class="card-body bg-success-outline">
-          <h3 class="h3-responsive text-muted"><%= bean.country_of_origin %></h3>
+          <a href="/beans/<%= bean.id %>"><h3 class="h3-responsive text-muted"><%= bean.country_of_origin %></h3></a>
           <p class="text-muted"><%= bean.flavor_profiles %></p>
         </div>
       </div>
@@ -51,11 +51,11 @@
 
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span><i class="fas fa-arrow-circle-left text-primary"></i></span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span><i class="fas fa-arrow-circle-right text-primary"></i></span>
   </a>
 </div>
       </div>
@@ -102,8 +102,9 @@
         </div> <!-- media-body -->
         </div> <!--card-body-->
       <% @roaster_reviews.reverse.each do |roaster_review| %>
-      <div class="card-body mt-1">
-        <div class="card-header border-primary">
+      <% if roaster_review.roaster_id == @roaster.id then %>
+      <div class="card-body m-3 p-0 border border-success rounded">
+        <div class="card-header bg-transparent p-3">
           <span class="font-italic">
             <a href="/users/<%= roaster_review.user_id %>">
               <%= User.find(roaster_review.user_id).email %>
@@ -113,10 +114,12 @@
             Created <%= time_ago_in_words(roaster_review.created_at) %> ago
           </span>
         </div>
-        <div class="card-body bg-success">
+        <div class="card-body bg-transparent p-3">
             <%= roaster_review.body %>
         </div>
       </div>
+      <% else %>
+      <% end %>
       <% end %>
     </div>
   </div>
