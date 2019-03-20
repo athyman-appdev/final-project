@@ -28,7 +28,62 @@
   </div>
 </div>
 <div class="container">
-  
+  <div class="card border-primary my-3">
+    <div class="card-header font-weight-bold bg-primary text-white">
+      Bean reviews
+    </div>
+    <div class="card-body">
+      <div class="media-body">
+          <form action="/create_review" method="post" class="pt-4">
+
+            <input type="hidden" name="beans_id" value="<%= @bean.id %>">
+
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+            <!-- Label and input for star rating -->
+
+            <!-- Label and input for body -->
+            <div class="form-group">
+              <label for="body" class="sr-only">
+                Body
+              </label>
+
+              <div class="input-group">
+                <input type="text" id="body" name="body" class="form-control" placeholder="Add a review..." required>
+
+                <span class="input-group-append">
+                  <button class="btn btn-primary" type="submit">
+                    <i class="far fa-edit"></i>
+
+                    Add Review
+                  </button>
+                </span>
+              </div> <!-- input-group -->
+            </div>  <!-- form-group -->
+          </form>
+        </div> <!-- media-body -->
+        </div> <!--card-body-->
+        <% @reviews.reverse.each do |review| %>
+        <% if review.beans_id == @bean.id then %>
+        <div class="card-body m-3 p-0 border border-success rounded">
+          <div class="card-header bg-transparent p-3">
+            <span class="font-italic">
+              <a href="/users/<%= review.user_id %>">
+                <%= User.find(review.user_id).email %>
+              </a>
+            </span>
+            <span>
+              Created <%= time_ago_in_words(review.created_at) %> ago
+            </span>
+          </div>
+          <div class="card-body bg-transparent p-3">
+            <%= review.body %>
+          </div>
+        </div>
+        <% else %>
+        <% end %>
+        <% end %>
+  </div>
+
 </div>  
   
 
