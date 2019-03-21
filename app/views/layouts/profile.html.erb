@@ -1,7 +1,106 @@
-<h1>Hello <%= current_user.email %></h1>
-
-<% @favorite_roasters.each do |favorite_roaster| %>
-<% if favorite_roaster.user_id == current_user.id then %>
-<p><%= favorite_roaster.roaster.roaster_name  %></p>
-<% end %>
-<% end %>
+<div class="row mb-3">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="m-3">Hello <%= current_user.email %></h1>
+        <h6 class="m-1">You joined <i class="fas fa-mug-hot"></i>Bean Me Up <%= time_ago_in_words(current_user.created_at) %></h6>
+        
+        <div class="card m-6 p-3 border-0">
+            <div class="card-header font-weight-bold bg-success">
+                <h3>Favorite Roasters</h3>
+            </div>
+            <div class="card-body p-0 m-0 pre-scrollable">
+            <% @favorite_roasters.each do |favorite_roaster| %>
+            <% if favorite_roaster.user_id == current_user.id then %>
+                <div class="card-deck p-2 m-2">
+                    <div class="card border-0 p-2 m-2">
+                        <a href="/roasters/<%= favorite_roaster.roaster.id %>" class="font-weight-bold"><%= favorite_roaster.roaster.roaster_name  %></a>
+                        <div>
+                            
+                            <a href="/delete_favorite_roaster/<%= favorite_roaster.id %>">
+                                <button class="btn btn-link pull-right text-danger">
+                                    <small><i class="fas fa-heart-broken"></i>
+                                    Make this roaster not a favorite :(</small>
+                                </button>
+                            </a>
+                            
+                        </div>
+                        <a href="<%= favorite_roaster.roaster.website_url %>" class="font-italic"><%= favorite_roaster.roaster.website_url %></a>
+                        <p class="mt-2" style="line-height: 1.2"><small><%= favorite_roaster.roaster.roaster_location %></small></p>
+                        <p style="line-height: 1.2"><small><%= favorite_roaster.roaster.shipping_options %></small></p>
+                        <span>
+                            <button class="btn btn-outline-info mt-2 btn-sm">
+                                <a href="/roasters/<%= favorite_roaster.roaster.id %>">Roaster details</a>
+                            </button>
+                            <button class="btn btn-outline-secondary mt-2 btn-sm">
+                                <a href="/roaster_reviews/new">Review this roaster!</a>
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <div class="card border-0 p-2 m-2">
+                        <p class="font-weight-bold" style="line-height: 1.1">Description</p>
+                        <p style="line-height: 1.2"><small><%= favorite_roaster.roaster.roaster_description %></small></p>
+                    </div>
+                    
+                    <div class="card border-0 p-2 m-2">
+                        <img src="<%= favorite_roaster.roaster.image_url %>" class="img-thumbnail rounded float-right align-top" style="height: 100%; width: 100%">
+                    </div>
+                    
+                </div>
+            <% end %>
+            <% end %>
+            </div>
+        </div>
+        
+        <div class="card m-6 p-3 border-0">
+            <div class="card-header font-weight-bold bg-success">
+                <h3>Favorite Beans</h3>
+            </div>
+            <div class="card-body p-0 m-0 pre-scrollable">
+            <% @favorite_beans.each do |favorite_bean| %>
+            <% if favorite_bean.user_id == current_user.id then %>
+                <div class="card-deck p-2 m-2">
+                    <div class="card border-0 p-2 m-2">
+                        <a href="/beans/<%= favorite_bean.bean.id %>" class="font-weight-bold"><%= favorite_bean.bean.country_of_origin  %></a>
+                        <div>
+                            
+                            <a href="/delete_favorite_bean/<%= favorite_bean.id %>">
+                                <button class="btn btn-link pull-right text-danger">
+                                    <small><i class="fas fa-heart-broken"></i>
+                                    Make this bean not a favorite :(</small>
+                                </button>
+                            </a>
+                            
+                        </div>
+                        <p class="m-0 p-0" style="line-height: 1.2"><small><%= favorite_bean.bean.roast_profile %> roast</small></p>
+                        <p class="m-0 p-0" style="line-height: 1.2"><small>Elevation: <%= favorite_bean.bean.elevation %></small></p>
+                        <p class="m-0 p-0" style="line-height: 1.2"><small>Harvest Season: <%= favorite_bean.bean.harvest_season %></small></p>
+                        <p class="m-0 p-0" style="line-height: 1.2"><small>Cultivar: <%= favorite_bean.bean.cultivar %></small></p>
+                        <p class="m-0 p-0" style="line-height: 1.2"><small>Acidity <%= favorite_bean.bean.acidity %></small></p>
+                        <p class="m-0 p-0" style="line-height: 1.2"><small class="font-weight-bold">$<%= favorite_bean.bean.price %>0</small></p>
+                        <span>
+                            <button class="btn btn-outline-info mt-2 btn-sm">
+                                <a href="/beans/<%= favorite_bean.bean.id %>">Bean details</a>
+                            </button>
+                            <button class="btn btn-outline-secondary mt-2 btn-sm">
+                                <a href="/reviews/new">Review this bean!</a>
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <div class="card border-0 p-2 m-2">
+                        <p class="font-weight-bold" style="line-height: 1.1">Description</p>
+                        <p style="line-height: 1.2"><small><%= favorite_bean.bean.flavor_profiles %></small></p>
+                    </div>
+                    
+                    <div class="card border-0 p-2 m-2">
+                        <img src="<%= favorite_bean.bean.image_url %>" class="img-thumbnail rounded float-right align-top" style="height: 100%; width: 100%">
+                    </div>
+                    
+                </div>
+            <% end %>
+            <% end %>
+            </div>
+        </div>
+        
+    </div>
+</div>
