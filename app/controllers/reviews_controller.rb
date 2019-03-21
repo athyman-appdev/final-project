@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     if @review.valid?
       @review.save
 
-      redirect_back(:fallback_location => "/reviews", :notice => "Review created successfully.")
+      redirect_back(:fallback_location => "/beans", :notice => "Bean review created successfully.")
     else
       render("review_templates/new_form_with_errors.html.erb")
     end
@@ -42,7 +42,6 @@ class ReviewsController < ApplicationController
   def update_row
     @review = Review.find(params.fetch("id_to_modify"))
 
-    @review.title = params.fetch("title")
     @review.body = params.fetch("body")
     @review.user_id = params.fetch("user_id")
     @review.beans_id = params.fetch("beans_id")
@@ -50,7 +49,7 @@ class ReviewsController < ApplicationController
     if @review.valid?
       @review.save
 
-      redirect_to("/reviews/#{@review.id}", :notice => "Review updated successfully.")
+      redirect_back(:fallback_location => "/beans", :notice => "Bean review updated successfully.")
     else
       render("review_templates/edit_form_with_errors.html.erb")
     end
@@ -61,6 +60,6 @@ class ReviewsController < ApplicationController
 
     @review.destroy
 
-    redirect_to("/reviews", :notice => "Review deleted successfully.")
+    redirect_back(:fallback_location => "/beans", :notice => "Bean review deleted successfully.")
   end
 end

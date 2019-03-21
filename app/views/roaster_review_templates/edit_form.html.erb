@@ -1,50 +1,43 @@
-<h1>
-  Edit roaster review #<%= @roaster_review.id %>
-</h1>
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">   
+    <h1>
+      Edit roaster review #<%= @roaster_review.id %>
+    </h1>
+  </div>
+</div>
 
 <hr>
-
-<form action="/update_roaster_review/<%= @roaster_review.id %>" method="post">
-
-  <div class="form-group">
-    <label for="title">
-      Title
-    </label>
-
-    <input type="text" id="title" name="title" class="form-control" value="<%= @roaster_review.title %>">
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">   
+    <form action="/update_roaster_review/<%= @roaster_review.id %>" method="post">
+    
+      <div class="form-group">
+        <label for="body">
+          Body
+        </label>
+    
+        <input type="text" id="body" name="body" class="form-control" value="<%= @roaster_review.body %>">
+      </div>
+    
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    
+      <div class="form-group">
+        <label for="roaster_id">
+          Roaster
+        </label>
+    
+        <%= select_tag("roaster_id", options_from_collection_for_select(Roaster.all, :id, :roaster_name, @roaster_review.try(:roaster_id)), :class => "form-control") %>
+      </div>
+    
+      <button class="btn btn-block btn-outline-secondary">
+        Update roaster review
+      </button>
+    </form>
+    
+    <hr>
+    
+    <a href="/roaster_reviews">
+      Go back
+    </a>
   </div>
-
-  <div class="form-group">
-    <label for="body">
-      Body
-    </label>
-
-    <input type="text" id="body" name="body" class="form-control" value="<%= @roaster_review.body %>">
-  </div>
-
-  <div class="form-group">
-    <label for="user_id">
-      User
-    </label>
-
-    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @roaster_review.user_id %>">
-  </div>
-
-  <div class="form-group">
-    <label for="roaster_id">
-      Roaster
-    </label>
-
-    <input type="text" id="roaster_id" name="roaster_id" class="form-control" value="<%= @roaster_review.roaster_id %>">
-  </div>
-
-  <button class="btn btn-block btn-outline-secondary">
-    Update roaster review
-  </button>
-</form>
-
-<hr>
-
-<a href="/roaster_reviews">
-  Go back
-</a>
+</div>

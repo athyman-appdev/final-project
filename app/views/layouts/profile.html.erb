@@ -1,7 +1,7 @@
 <div class="row mb-3">
     <div class="col-md-6 offset-md-3">
         <h1 class="m-3">Hello <%= current_user.email %></h1>
-        <h6 class="m-1">You joined <i class="fas fa-mug-hot"></i>Bean Me Up <%= time_ago_in_words(current_user.created_at) %></h6>
+        <h6 class="m-1">You joined <i class="fas fa-mug-hot"></i>Bean Me Up <%= time_ago_in_words(current_user.created_at) %> ago</h6>
         
         <div class="card m-6 p-3 border-0">
             <div class="card-header font-weight-bold bg-success">
@@ -46,6 +46,40 @@
                     </div>
                     
                 </div>
+                <% if RoasterReview.where(user_id: current_user, roaster_id: favorite_roaster.roaster.id).exists? %>
+                    
+                        <div class="card p-1 border-primary">
+                            
+                            <div class="card-header">
+                                My reviews of <%= favorite_roaster.roaster.roaster_name %>
+                            </div>
+                            
+                            <% @roaster_reviews.each do |roaster_review| %>
+                            <% if roaster_review.roaster_id == favorite_roaster.roaster.id %>
+                            <div class="card-body p-1 m-1">
+                                <%= roaster_review.body %> </br>
+                                <i><small><%= time_ago_in_words(roaster_review.created_at) %></small></i>
+                                <div class="btn-group d-flex" role="group">
+                                    <a href="/roaster_reviews/<%= roaster_review.id %>/edit" class="btn btn-warning w-100 btn-sm">
+                                      <i class="fas fa-edit"></i>
+                    
+                                      Edit Roaster Review
+                                    </a>
+                    
+                                    <a href="/delete_roaster_review/<%= roaster_review.id %>" class="btn btn-danger w-100 btn-sm" rel="nofollow">
+                                      <i class="fas fa-trash"></i>
+                    
+                                      Delete Roaster Review
+                                    </a>
+                                </div>
+                            </div>
+                            <% else %>
+                            <% end %>
+                            <% end %>
+                        </div>
+                    
+                <% else %>
+                <% end %>
             <% end %>
             <% end %>
             </div>
@@ -97,6 +131,40 @@
                     </div>
                     
                 </div>
+                <% if Review.where(user_id: current_user, beans_id: favorite_bean.bean.id).exists? %>
+                    
+                        <div class="card p-1 border-primary">
+                            
+                            <div class="card-header">
+                                My reviews of <%= favorite_bean.bean.country_of_origin %>
+                            </div>
+                            
+                            <% @bean_reviews.each do |bean_review| %>
+                            <% if bean_review.beans_id == favorite_bean.bean.id %>
+                            <div class="card-body p-1 m-1">
+                                <%= bean_review.body %> </br>
+                                <i><small><%= time_ago_in_words(bean_review.created_at) %></small></i>
+                                <div class="btn-group d-flex" role="group">
+                                    <a href="/reviews/<%= bean_review.id %>/edit" class="btn btn-warning w-100 btn-sm">
+                                      <i class="fas fa-edit"></i>
+                    
+                                      Edit Bean Review
+                                    </a>
+                    
+                                    <a href="/delete_review/<%= bean_review.id %>" class="btn btn-danger w-100 btn-sm" rel="nofollow">
+                                      <i class="fas fa-trash"></i>
+                    
+                                      Delete Bean Review
+                                    </a>
+                                </div>
+                            </div>
+                            <% else %>
+                            <% end %>
+                            <% end %>
+                        </div>
+                    
+                <% else %>
+                <% end %>
             <% end %>
             <% end %>
             </div>

@@ -27,7 +27,7 @@ class RoasterReviewsController < ApplicationController
     if @roaster_review.valid?
       @roaster_review.save
 
-      redirect_back(:fallback_location => "/roaster_reviews", :notice => "Roaster review created successfully.")
+      redirect_back(:fallback_location => "/roasters", :notice => "Roaster review created successfully.")
     else
       render("roaster_review_templates/new_form_with_errors.html.erb")
     end
@@ -42,7 +42,6 @@ class RoasterReviewsController < ApplicationController
   def update_row
     @roaster_review = RoasterReview.find(params.fetch("id_to_modify"))
 
-    @roaster_review.title = params.fetch("title")
     @roaster_review.body = params.fetch("body")
     @roaster_review.user_id = params.fetch("user_id")
     @roaster_review.roaster_id = params.fetch("roaster_id")
@@ -50,7 +49,7 @@ class RoasterReviewsController < ApplicationController
     if @roaster_review.valid?
       @roaster_review.save
 
-      redirect_to("/roaster_reviews/#{@roaster_review.id}", :notice => "Roaster review updated successfully.")
+      redirect_back(:fallback_location => "/roasters", :notice => "Roaster review updated successfully.")
     else
       render("roaster_review_templates/edit_form_with_errors.html.erb")
     end
@@ -61,6 +60,6 @@ class RoasterReviewsController < ApplicationController
 
     @roaster_review.destroy
 
-    redirect_to("/roaster_reviews", :notice => "Roaster review deleted successfully.")
+    redirect_back(:fallback_location => "/roasters", :notice => "Roaster review deleted successfully.")
   end
 end

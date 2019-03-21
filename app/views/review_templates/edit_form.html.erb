@@ -1,50 +1,43 @@
-<h1>
-  Edit review #<%= @review.id %>
-</h1>
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Edit review #<%= @review.id %>
+    </h1>
+  </div>
+</div>
 
 <hr>
-
-<form action="/update_review/<%= @review.id %>" method="post">
-
-  <div class="form-group">
-    <label for="title">
-      Title
-    </label>
-
-    <input type="text" id="title" name="title" class="form-control" value="<%= @review.title %>">
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <form action="/update_review/<%= @review.id %>" method="post">
+    
+      <div class="form-group">
+        <label for="body">
+          Body
+        </label>
+    
+        <input type="text" id="body" name="body" class="form-control" value="<%= @review.body %>">
+      </div>
+    
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    
+      <div class="form-group">
+        <label for="beans_id">
+          Beans
+        </label>
+    
+        <%= select_tag("beans_id", options_from_collection_for_select(Bean.all, :id, :country_of_origin, @review.try(:bean_id)), :class => "form-control") %>
+      </div>
+    
+      <button class="btn btn-block btn-outline-secondary">
+        Update review
+      </button>
+    </form>
+    
+    <hr>
+    
+    <a href="/reviews">
+      Go back
+    </a>
   </div>
-
-  <div class="form-group">
-    <label for="body">
-      Body
-    </label>
-
-    <input type="text" id="body" name="body" class="form-control" value="<%= @review.body %>">
-  </div>
-
-  <div class="form-group">
-    <label for="user_id">
-      User
-    </label>
-
-    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @review.user_id %>">
-  </div>
-
-  <div class="form-group">
-    <label for="beans_id">
-      Beans
-    </label>
-
-    <input type="text" id="beans_id" name="beans_id" class="form-control" value="<%= @review.beans_id %>">
-  </div>
-
-  <button class="btn btn-block btn-outline-secondary">
-    Update review
-  </button>
-</form>
-
-<hr>
-
-<a href="/reviews">
-  Go back
-</a>
+</div>

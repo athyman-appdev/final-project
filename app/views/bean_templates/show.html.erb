@@ -78,6 +78,22 @@
           <div class="card-body bg-transparent p-3">
             <%= review.body %>
           </div>
+          <% if review.user_id == current_user.id %>
+          <div class="btn-group d-flex" role="group">
+              <a href="/reviews/<%= review.id %>/edit" class="btn btn-warning w-100 btn-sm">
+                <i class="fas fa-edit"></i>
+  
+                Edit Bean Review
+              </a>
+  
+              <a href="/delete_review/<%= review.id %>" class="btn btn-danger w-100 btn-sm" rel="nofollow">
+                <i class="fas fa-trash"></i>
+  
+                Delete Bean Review
+              </a>
+          </div>
+          <% else %>
+          <% end %>
         </div>
         <% else %>
         <% end %>
