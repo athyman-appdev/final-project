@@ -122,5 +122,6 @@ Rails.application.routes.draw do
   
   get("/", {:controller => "coffee", :action => "index"})
   get("/about", {:controller => "coffee", :action => "about"})
+  get("/users/:id_to_display", {:controller => "coffee", :action => "profile"})
 
 end

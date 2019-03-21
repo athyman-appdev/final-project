@@ -21,6 +21,6 @@ class Roaster < ApplicationRecord
     #:class_name => "beans", :foreign_key => "roaster_id", 
     
     has_many :beans, :dependent => :destroy
-    has_many :favorite_roasters
+    has_many :favorite_roasters, :class_name => "favorite_roasters", :foreign_key => "roaster_id"
     
 end
